@@ -1,1 +1,4 @@
-//Replace this file with the contents of your hello.sh
+# Sahana Gujja
+# 9/16/25
+
+echo "Hello, world!"
