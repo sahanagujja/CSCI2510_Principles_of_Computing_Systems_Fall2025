@@ -1,1 +1,9 @@
-//Replace this file with the contents of your hello_fprintf.c
+//Sahana Gujja
+// 9/16/2025
+# include <stdio.h>
+
+int main(int arg char argv[])
+{
+  fprintf(stdout, "Hello, World!\n");
+  return 0;
+}
