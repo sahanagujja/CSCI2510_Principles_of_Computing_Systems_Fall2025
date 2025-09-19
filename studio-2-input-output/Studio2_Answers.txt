@@ -1,0 +1,85 @@
+# CSCI 2510: Studio - Input/Output Answers
+
+## Question 1:
+When I type "cat" and then write a few lines of text:
+- The cat program waits for input from the keyboard
+- Each line I type after is immediately echoed back to the terminal 
+- The program continues to read and echo lines until I press CTRL-D
+- CTRL-D sends an EOF character which terminates the cat program
+
+## Queston 2
+When I run `cat < mars.txt`:
+- The cat program reads from the mars.txt file instead of the keyboard
+- All of mars.txt is displayed on the terminal
+- The program ends on its own when it reaches the end of the file
+
+## Exercise 3: 
+When I run `cat < mars.txt > new.txt`:
+- The cat program reads from mars.txt 
+- Instead of displaying output on the terminal, it writes to new.txt (redirection)
+- Opening new.txt shows it contains an exact copy of mars.txt
+- This demonstrates both input and output redirection 
+
+## Exercise 4:
+When I run `cat > new.txt`:
+- The cat program reads from input 
+- Instead of echoing to the terminal, it writes my input to new.txt
+- After typing some lines and pressing CTRL-D, new.txt contains exactly what I typed
+- This shows output redirection 
+
+## Exercise 5:
+When I use `cat >> new.txt`:
+- The program behaves the same as single '>' for input
+- However, instead of overwriting new.txt, it appends to the end
+- Running the command multiple times adds new content to the existing file
+- The '>>' operator does an append redirection instead of overwrite + redirection
+
+## Exercise 6: 
+The header file needed for read() and write() system calls is:
+```c
+#include <unistd.h>
+```
+
+## Exercise 7: 
+Code added:
+```c
+#define bufferSize 200
+char buffer[bufferSize];
+```
+
+## Exercise 8: 
+- Return type: `ssize_t`
+- End of file indicator: `0` 
+- Error indicator: `-1` 
+
+## Exercise 9: 
+The algorithm is implemented in the copy.c program with:
+- Infinite while loop
+- read() from STDIN_FILENO into buffer
+- Check for return value 0 and break
+- write() to STDOUT_FILENO using bytes_read as the count
+
+## Exercise 10:
+My program behaves identically to cat in all test scenarios:
+- `./copy < mars.txt` displays the file contents
+- `./copy < mars.txt > output.txt` copies the file
+- `./copy` with input works the same
+- All redirection operations work correctly?
+
+## Exercise 11: 
+Testing different buffer sizes:
+- **bufferSize = 1**: Program works correctly but slower (more system calls)
+- **bufferSize = 10**: Works correctly, moderate performance
+- **bufferSize = 1000**: Works correctly, good performance
+- **bufferSize = 10000**: Works correctly, excellent performance
+ I think the correctness is not afected by buffer size but rather performance
+
+**Small buffer:**
+- Pros: Uses less memory
+- Cons: More system calls, slower performance, higher overhead
+
+**Large buffer:**
+- Pros: Fewer system calls, better performance, lower CPU overhead
+- Cons: Uses more memory, may waste memory for small inputs
+
+(The buffer size balances memory usage with performance)
